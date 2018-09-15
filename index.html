@@ -459,12 +459,12 @@
                         </form>-->
                         
                         <div novalidate="" target="_blank" class="validate" name="mc-embedded-subscribe-form" id="mc-embedded-subscribe-form" method="post">  
-
-<input type="text" placeholder="Your Name" id="MERGE1" name="MERGE1" class="placeholder">
-<input type="text" placeholder="Email Address" id="MERGE0" name="MERGE0" class="placeholder">
-<input type="submit" class="pm-workshop-newsletter-submit-btn" value="subscribe" id="mc-embedded-subscribe" name="subscribe" onclick="SubcribeBSB()">
-
-						</div>
+                        <form id="home-page-subscribe">
+                          <input type="text" placeholder="Your Name" id="MERGE1" name="Name" class="placeholder">
+                          <input type="text" placeholder="Email Address" id="MERGE0" name="Email" class="placeholder">
+                          <input type="submit" class="pm-workshop-newsletter-submit-btn" value="subscribe" id="mc-embedded-subscribe" name="subscribe">
+                        </form>
+						            </div>
                      </div>
                         
                     </div>
@@ -679,42 +679,7 @@
 	<script src="/media/js/wow/wow.min.js"></script>
         
     <p id="back-top" class="visible-lg visible-md visible-sm"> </p>
-    <script type="text/javascript">
-	function SubcribeBSB()
-	{
-	    var e=document.getElementById("MERGE0").value;
-	    var n=document.getElementById("MERGE1").value;
-	    var str="db/subscribeb198.html?e="+e
-		    +"&n="+n;
-		    if (e=="")
-		    {
-			$("#MERGE0").css("border","1px");
-		    }
-	    AjaxCall(str);
-	    $("#MERGE0,#MERGE1").val("");
-	}
-	 function AjaxCall(str)
- {
-    var xmlhttp;
-    if (window.XMLHttpRequest)
-    {
-    xmlhttp = new XMLHttpRequest();
-    }
-    else
-    {
-    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    xmlhttp.onreadystatechange = function () {
-    if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
-    {
-        var response = xmlhttp.responseText;
-    }
-    }
-    //alert(str);
-    xmlhttp.open("GET.html", str, true);
-    xmlhttp.send();
- }
-    </script>
+
 
 
 
