@@ -944,3 +944,20 @@
 	
 })(jQuery);
 
+
+function SubcribeBSBFooter(){
+	var $form = $('#pm-footer-subscribe'),
+		url = 'https://script.google.com/macros/s/AKfycbyJF7I7-BHY89xp_T7pEz77Vp42BR0hOQj5GDQ0c2l0U-Nk5tuS/exec';
+
+	debugger;
+      var jqxhr = $.ajax({
+        url: url,
+        method: "GET",
+        dataType: "json",
+        data: $form.serialize()
+      }).success(
+        function(data){
+            $form[0].reset();
+        }
+      );
+}

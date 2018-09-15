@@ -214,17 +214,17 @@
                 	<h5 class="pm-primary">Send us an inquiry</h5>
                     <div class="pm-contact-form-container">
                     	<p class="pm-required">Your email address will be held strictly confidential. Required fields are marked *</p>
-                    	<form id="contactFormAdvanced" action="http://www.bodyspeaksbetter.com/contact.php#contact-sent" method="POST" enctype="multipart/form-data">
-								<input type="hidden" value="true" name="emailSent" id="emailSent">
+                    	<form id="contactFormAdvanced">
+								
 								<div class="row">
 									<div class="form-group">
 										<div class="col-md-12">
 											<label>Name*</label>
-											<input type="text" value="" data-msg-required="Please enter your name." maxlength="100" class="pm-form-textfield form-control" name="name" id="name" required>
+											<input type="text" value="" data-msg-required="Please enter your name." maxlength="100" class="pm-form-textfield form-control" name="Name" id="name" required>
 										</div>
 										<div class="col-md-12">
 											<label>Email*</label>
-											<input type="email" value="" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="pm-form-textfield form-control" name="email" id="email" required>
+											<input type="email" value="" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="pm-form-textfield form-control" name="Email" id="email" required>
 										</div>
 									</div>
 								</div>
@@ -232,7 +232,7 @@
 									<div class="form-group">
 										<div class="col-md-12">
 											<label>Subject*</label>
-											<input type="text" value="" data-msg-required="Please enter your email address." class="pm-form-textfield form-control" name="subject" id="subject" required>
+											<input type="text" value="" data-msg-required="Please enter your email address." class="pm-form-textfield form-control" name="Subject" id="subject" required>
 										</div>
 									</div>
 								</div>
@@ -242,7 +242,7 @@
 									<div class="form-group">
 										<div class="col-md-12">
 											<label>Message*</label>
-											<textarea maxlength="5000" data-msg-required="Please enter your message." rows="5" class="pm-form-textarea form-control" name="message" style="resize:none;" id="message" required></textarea>
+											<textarea maxlength="5000" data-msg-required="Please enter your message." rows="5" class="pm-form-textarea form-control" name="Message" style="resize:none;" id="message" required></textarea>
 										</div>
 									</div>
 								</div>
@@ -295,8 +295,8 @@
                             <h6>Subscribe to our newsletter</h6>
                             <p>Sign up for our weekly newsletter and stay up to date with BodySpeaksBetter.</p>
                             <div class="pm-footer-subscribe-form-container">
-                                <form action="#" method="post" id="pm-footer-subscribe">
-                                    <input class="pm-footer-subscribe-field" type="text" placeholder="Email Address" value="" id="fEmail"/>
+                                <form id="pm-footer-subscribe">
+                                    <input class="pm-footer-subscribe-field" type="text" placeholder="Email Address" value="" id="fEmail" name="Email"/>
                                     <div class="pm-footer-subscribe-submit-btn" onclick="SubcribeBSBFooter()">
                                         <i class="fa fa-paper-plane"></i>
                                     </div>
@@ -331,39 +331,7 @@
             
         </div>
     
-    </div><!-- /pm_layout-wrapper -->
-     <script type="text/javascript">
-	function SubcribeBSBFooter()
-	{
-	    var e=document.getElementById("fEmail").value;
-	     var str="db/subscribeb198.html?e="+e
-		    +"&n=";
-	    AjaxCallFooter(str);
-	}
-	 function AjaxCallFooter(str)
- {
-    var xmlhttp;
-    if (window.XMLHttpRequest)
-    {
-    xmlhttp = new XMLHttpRequest();
-    }
-    else
-    {
-    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    xmlhttp.onreadystatechange = function () {
-    if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
-    {
-        var response = xmlhttp.responseText;
-		    $("#fEmail").val("");
-
-    }
-    }
-    //alert(str);
-    xmlhttp.open("GET.html", str, true);
-    xmlhttp.send();
- }
-    </script>  </div><!-- /pm_layout-wrapper -->
+    </div>  </div><!-- /pm_layout-wrapper -->
     
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -408,6 +376,26 @@ $(".form-group:input").focus(function()
 			     {
 							alert("test");
 							});
+    </script>
+
+    <script type="text/javascript">
+        
+        var $form = $('form#contactFormAdvanced'),
+            url = 'https://script.google.com/macros/s/AKfycbxGXpqIY5msI-3Dg2FgpWsqEzUrOGggUCDC0vUg6h8pHbGMIsU/exec'
+
+        $('#contactFormSubmit').on('click', function(e) {
+          e.preventDefault();
+          var jqxhr = $.ajax({
+            url: url,
+            method: "GET",
+            dataType: "json",
+            data: $form.serialize()
+          }).success(
+            function(data){
+                $form[0].reset();
+            }
+          );
+        });
     </script>
   </body>
 
