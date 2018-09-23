@@ -947,14 +947,12 @@
 
 function SubcribeBSBFooter(formId){
 	var $form = formId && $(formId) || $('#pm-footer-subscribe');
-	var url = 'https://script.google.com/macros/s/AKfycbyJF7I7-BHY89xp_T7pEz77Vp42BR0hOQj5GDQ0c2l0U-Nk5tuS/exec';
 	var data = $form.serialize();
-	debugger;
 	if(data.search("Name=")==-1)
 		data += "&Name="
 
       var jqxhr = $.ajax({
-        url: url,
+        url: subscriber_sheet,
         method: "GET",
         dataType: "json",
         data: data

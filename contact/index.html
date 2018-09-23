@@ -391,13 +391,12 @@ $(".form-group:input").focus(function()
 
     <script type="text/javascript">
         
-        var $form = $('form#contactFormAdvanced'),
-            url = 'https://script.google.com/macros/s/AKfycbxGXpqIY5msI-3Dg2FgpWsqEzUrOGggUCDC0vUg6h8pHbGMIsU/exec'
+        var $form = $('form#contactFormAdvanced');
 
         $('#contactFormSubmit').on('click', function(e) {
           e.preventDefault();
           var jqxhr = $.ajax({
-            url: url,
+            url: inquiry_sheet,
             method: "GET",
             dataType: "json",
             data: $form.serialize()
