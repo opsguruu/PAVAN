@@ -32,7 +32,7 @@ else{
   // Request the camera.
   navigator.getMedia(
     {
-      video: true
+      video: { facingMode: 'user', mirrored: true }
     },
     // Success Callback
     function(stream){
@@ -156,7 +156,8 @@ delete_photo_btn.addEventListener("click", function(e){
   
   randomEmotion = randomItem(Object.keys(Emotions));
   emotions.src = randomItem(Emotions[randomEmotion]);
-  console.log(randomEmotion);
+  emotion_name.innerText = randomEmotion;
+  //console.log(randomEmotion);
 
 });
 
@@ -185,6 +186,9 @@ function takeSnapshot(){
     // Setup a canvas with the same dimensions as the video.
     hidden_canvas.width = width;
     hidden_canvas.height = height;
+
+    context.translate(width, 0);
+    context.scale(-1, 1);
 
     // Make a copy of the current frame in the video on the canvas.
     context.drawImage(video, 0, 0, width, height);

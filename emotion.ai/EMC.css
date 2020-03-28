@@ -2,7 +2,10 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 
-
+video {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
 
 .emotion{
     max-width: 300px;
@@ -165,13 +168,13 @@
 
 
 #loader { 
-            border: 12px solid #f3f3f3; 
-            border-radius: 50%; 
-            border-top: 12px solid #444444; 
-            width: 70px; 
-            height: 70px; 
-            animation: spin 1s linear infinite; 
-        } 
+    border: 12px solid #f3f3f3; 
+    border-radius: 50%; 
+    border-top: 12px solid #444444; 
+    width: 70px; 
+    height: 70px; 
+    animation: spin 1s linear infinite; 
+} 
           
 @keyframes spin { 
     100% { 
