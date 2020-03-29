@@ -101,22 +101,14 @@ take_photo_btn.addEventListener("click", function(e){
   else {
 
     const base64 = image.src;
-    fetch(base64)
-    .then(res => res.blob())
-    .then(blob => {
-      //const formData = new FormData();
-      //const file = new File([blob], "filename.jpeg");
-      //formData.append("Emotion", "Happy");
-      //formData.append("EmotionImage", file);
-      b64_image = image.src.replace(/^data:image\/(png|jpg);base64,/, "");
-      postData = {"Emotion": randomEmotion, "EmotionImage": b64_image};
 
-      loader.style.display = "block";
-      
-     //const API_URL = 'https://script.google.com/a/trustscore.in/macros/s/AKfycbx_ASrsNW8ALILmGvX1bZOpXuV46dwcd8TepN7CwU0bMVTCSps5/exec';
-     //const PROXY_URL = 'https://cors-anywhere.herokuapp.com/';
-     const API_URL = 'https://gsazbu8adi.execute-api.ap-south-1.amazonaws.com/live/face';
-     fetch(API_URL, {
+    b64_image = base64.replace(/^data:image\/(png|jpg);base64,/, "");
+    postData = {"Emotion": randomEmotion, "EmotionImage": b64_image};
+
+    const API_URL = 'https://gsazbu8adi.execute-api.ap-south-1.amazonaws.com/live/face';
+
+    loader.style.display = "block";
+    fetch(API_URL, {
       mode: 'no-cors',      
       method: 'POST',
       credentials: 'include',
@@ -125,13 +117,14 @@ take_photo_btn.addEventListener("click", function(e){
       },
       body: JSON.stringify(postData)
     })
-     .then(res => {
+   .then(res => {
       loader.style.display = "none";
       delete_photo_btn.dispatchEvent(new Event('click', { 'bubbles': true }));
-    }) 
-     //.then(res => console.log(res))
-   })
-
+    })
+   .catch((error) => {
+      loader.style.display = "none";
+      console.error('There has been a problem with your fetch operation:', error);
+    });
   }
 
 });
@@ -153,8 +146,13 @@ delete_photo_btn.addEventListener("click", function(e){
 
   // Resume playback of stream.
   video.play();
-  
-  randomEmotion = randomItem(Object.keys(Emotions));
+
+  const EmotionsList =  Object.keys(Emotions);
+  const index = EmotionsList.indexOf(randomEmotion);
+  if (index > -1) {
+    EmotionsList.splice(index, 1);
+  }
+  randomEmotion = randomItem(EmotionsList);
   emotions.src = randomItem(Emotions[randomEmotion]);
   emotion_name.innerText = randomEmotion;
   //console.log(randomEmotion);
