@@ -150,6 +150,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                         </li>
                                     </ul>
                                 </li>
+
+                                <li>
+                                    <a href="#">Tools</a>
+                                    <ul>
+                                        <li>
+                                            <a href="/tools/emotion-detection/">EMOTION DETECTION</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                                                
                                 <li>
                                     <a href="/contact/">Contact Us</a>
                                 </li>
@@ -191,11 +201,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- BODY AREA -->
         
         <div class="container pm-containerPadding-top-60 pm-containerPadding-bottom-30">
-        	<div class="row">
-                <div class="col-lg-12">
-                        <div id="map-canvas" style="width:100%;height:320px;border:4px solid #ccc;padding-bottom:10px;">
-                </div>
-            </div>
+
         </div>
         
         <div class="container pm-containerPadding-bottom-40">
@@ -219,6 +225,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
         </div>
         
+        <!--
         <div class="container pm-containerPadding-bottom-60">
         	<div class="row">
             	<div class="col-lg-12">
@@ -279,7 +286,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
             </div>
         </div>
-        
+        -->
+        <div class="container pm-containerPadding-bottom-60">
+        <style>.forms-studio{position:relative;padding-bottom:56.25%;overflow:hidden;width:100%;height:600px;}.forms-studio iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}</style><div class='forms-studio'><iframe src='https://script.google.com/a/bodyspeaksbetter.com/macros/s/AKfycbzlENYIhhjeqpxovZHl4-Ds5Cic3YG67GtwDTifHjTFQMRwPV0/exec'></iframe></div>
+        </div> 
+
         <!-- BODY AREA end -->
         
         <footer>
@@ -365,48 +376,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<script src="/media/js/wow/wow.min.js"></script>
         
     <p id="back-top" class="visible-lg visible-md visible-sm"> </p>
-   <script>
-      
-      function initialize() {
-  var myLatlng = new google.maps.LatLng(15.283219,73.986191);
-  var mapOptions = {
-    zoom: 12,
-    center: myLatlng
-  }
-  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-  var marker = new google.maps.Marker({
-      position: myLatlng,
-      map: map,
-      title: 'Fatorda, Goa'
-  });
-}
-
-google.maps.event.addDomListener(window, 'load', initialize);
-$(".form-group:input").focus(function()
-			     {
-							alert("test");
-							});
-    </script>
-
-    <script type="text/javascript">
-        
-        var $form = $('form#contactFormAdvanced');
-
-        $('#contactFormSubmit').on('click', function(e) {
-          e.preventDefault();
-          var jqxhr = $.ajax({
-            url: inquiry_sheet,
-            method: "GET",
-            dataType: "json",
-            data: $form.serialize()
-          }).success(
-            function(data){
-                $form[0].reset();
-            }
-          );
-        });
-    </script>
   </body>
 
 <!-- Mirrored from www.bodyspeaksbetter.com/contact.php by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 09 Sep 2018 07:31:52 GMT -->
