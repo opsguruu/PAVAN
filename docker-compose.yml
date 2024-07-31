@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+
+  test-files:
+    build: 
+     context: ./OPS-GURU-DEVOPS
+    volumes:
+      - ./OPS-GURU-DEVOPS:/usr/src/app
+    command: tail -f /dev/null
+  
+
